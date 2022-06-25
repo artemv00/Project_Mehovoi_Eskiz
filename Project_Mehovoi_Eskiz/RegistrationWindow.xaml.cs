@@ -22,7 +22,7 @@ namespace Project_Mehovoi_Eskiz
         public RegistrationWindow()
         {
             InitializeComponent();
-            SaveRegButton.Background = new SolidColorBrush(Color.FromArgb(0, 0, 0, 0));
+            SaveRegButton.Background = new SolidColorBrush(System.Windows.Media.Color.FromArgb(0, 0, 0, 0));
         }
 
         private void GoToTheMainWindow_Click(object sender, RoutedEventArgs e)

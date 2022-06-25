@@ -1,0 +1,109 @@
+﻿<Window x:Class="Project_Mehovoi_Eskiz.UserGoodsViewWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Project_Mehovoi_Eskiz"
+        mc:Ignorable="d"
+        Title="UserGoodsViewWindow" Height="600" Width="1000">
+    <Grid>
+        <TabControl Height="Auto" Width="Auto" SelectionChanged="OnSelectionChanged">
+            <TabItem x:Name="Catalog" Initialized="Catalog_Initialized">
+                <TabItem.Header>
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="./Images/Catalog.png" Width="20" Height="20"/>
+                        <TextBlock Margin="3">Каталог</TextBlock>
+                    </StackPanel>
+                </TabItem.Header>
+                <ListBox x:Name="GoodsList" Background="#FFF1B0B0">
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition x:Name="Photo" Width="*"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition x:Name="Name" Width="*" />
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition x:Name="Description" Width="*"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition x:Name="Price" Width="*"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition x:Name="Count" Width="*"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition x:Name="Count2" Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                </Grid.RowDefinitions>
+                                <TextBlock x:Name="PriceTextBox" Text="40 грiвен" Grid.Column="4" Initialized="PriceTextBox_Initialized"/>
+                                <Image x:Name="PhotoIm" Width="50" Height="50"  Grid.Column="2" Initialized="PhotoIm_Initialized"/>
+                                <TextBlock x:Name="ArticulTextBlock" Margin="3"  Grid.Column="5" Grid.Row="1" Initialized="ArticulTextBlock_Initialized"/>
+                                <TextBlock x:Name="ProdNameTextBlock" Margin="3"  Grid.Column="7" Grid.Row="2" Initialized="ProdNameTextBlock_Initialized"/>
+                                <Button x:Name="BuyButton" Grid.Column="11" Initialized="BuyButton_Initialized" Click="BuyButton_Click"/>
+                                <!--<TextBlock x:Name="Prod_ID" Visibility="Hidden" Initialized="Prod_ID_Initialized"/>-->
+                            </Grid>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+            </TabItem>
+            <TabItem x:Name="AccountInfo" >
+                <TabItem.Header>
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="./Images/Home.png" Width="20" Height="20"/>
+                        <TextBlock Margin="3">Личный кабинет</TextBlock>
+                    </StackPanel>
+                </TabItem.Header>
+                <!--<ScrollBar Margin="0,0,0,0" Width="16" HorizontalAlignment="Right"/>-->
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="54*"/>
+                        <RowDefinition Height="221*"/>
+                    </Grid.RowDefinitions>
+                    <TextBlock x:Name="GreetingText" TextWrapping="Wrap" Text="Hello"  FontSize="45" Grid.Row="0" Margin="0, 0,200,0"/>
+                    <TextBlock x:Name="CartListText" TextWrapping="Wrap" Text="Your orders list:"  FontSize="25" Grid.Row="0" Margin="0,70,0,0"/>
+                    <ListBox x:Name="OrderPosition" Background="#FFF1B0B0" Grid.Row="1" Margin="0,5,0,0">
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition x:Name="OrderNum" Width="*"/>
+                                        <ColumnDefinition  Width="Auto"/>
+                                        <ColumnDefinition x:Name="NumOfPos" Width="*"/>
+                                        <ColumnDefinition  Width="Auto"/>
+                                        <ColumnDefinition x:Name="TotalPrice" Width="*"/>
+                                        <ColumnDefinition  Width="Auto"/>
+                                        <ColumnDefinition x:Name="OrderDate" Width="*"/>
+                                        <ColumnDefinition  Width="Auto"/>
+                                        <ColumnDefinition x:Name="Status" Width="*"/>
+                                    </Grid.ColumnDefinitions>
+
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto"/>
+                                    </Grid.RowDefinitions>
+                                    <TextBlock x:Name="OrderNumTBlck" Grid.Column="1" Initialized="OrderNumTBlck_Initialized"/>
+                                    <TextBlock x:Name="NumOfPosTBlck" Grid.Column="3" Initialized="NumOfPosTBlck_Initialized"/>
+                                    <TextBlock x:Name="TotalPriceTBlck" Grid.Column="5" Initialized="TotalPriceTBlck_Initialized"/>
+                                    <TextBlock x:Name="OrderDateTBlck" Grid.Column="7" Initialized="OrderDateTBlck_Initialized"/>
+                                    <TextBlock x:Name="StatusTBlck" Grid.Column="9" Initialized="StatusTBlck_Initialized"/>
+                                </Grid>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
+                    <Button x:Name="LogOutBtn" Content="LogOut" Margin="0,10,10,0" VerticalAlignment="Top" HorizontalAlignment="Right" Width="185" />
+                </Grid>
+            </TabItem>
+            <TabItem x:Name="Cart" >
+                <TabItem.Header>
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="./Images/Cart.png" Width="20" Height="20"/>
+                        <TextBlock Margin="3">Корзина</TextBlock>
+                    </StackPanel>
+                </TabItem.Header>
+                <!--<ScrollBar Margin="0,0,0,0" Width="16" HorizontalAlignment="Right"/>-->
+
+            </TabItem>
+
+        </TabControl>
+    </Grid>
+</Window>
