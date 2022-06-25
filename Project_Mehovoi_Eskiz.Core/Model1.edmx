@@ -1,0 +1,1188 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Хранилище database_proga_mehovoyeskiz2Model" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="accessories">
+          <Key>
+            <PropertyRef Name="Mat_ID" />
+          </Key>
+          <Property Name="cost_per_pc" Type="float" Nullable="false" />
+          <Property Name="pieces" Type="int" Nullable="false" />
+          <Property Name="Mat_ID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Cart">
+          <Key>
+            <PropertyRef Name="User_ID" />
+          </Key>
+          <Property Name="Total_Price" Type="float" Nullable="false" />
+          <Property Name="num_of_positions" Type="int" Nullable="false" />
+          <Property Name="User_ID" Type="int" Nullable="false" />
+        </EntityType>
+        <!--Ошибки, обнаруженные при создании:
+предупреждение 6002: В таблице или представлении "database_proga_mehovoyeskiz2.dbo.Cart_pos" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
+        <EntityType Name="Cart_pos">
+          <Key>
+            <PropertyRef Name="quantity" />
+            <PropertyRef Name="UID" />
+            <PropertyRef Name="Prod_ID" />
+          </Key>
+          <Property Name="quantity" Type="int" Nullable="false" />
+          <Property Name="UID" Type="int" Nullable="false" />
+          <Property Name="Prod_ID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Cat_product">
+          <Key>
+            <PropertyRef Name="Prod_ID" />
+          </Key>
+          <Property Name="Prod_NAME" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Prod_Description" Type="text" Nullable="false" />
+          <Property Name="Prod_ID" Type="int" Nullable="false" />
+          <Property Name="Prod_Articul" Type="varchar" MaxLength="1000" Nullable="false" />
+          <Property Name="RU_size" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Catalog">
+          <Key>
+            <PropertyRef Name="Prod_ID" />
+          </Key>
+          <Property Name="Prod_Name" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="PhotoHyperlink" Type="varchar" MaxLength="1000" Nullable="false" />
+          <Property Name="Prod_ID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Custom">
+          <Key>
+            <PropertyRef Name="Prod_ID" />
+          </Key>
+          <Property Name="Breast" Type="float" />
+          <Property Name="Waste" Type="float" />
+          <Property Name="Back_width" Type="float" />
+          <Property Name="Hips" Type="float" />
+          <Property Name="shelf_height" Type="float" />
+          <Property Name="arm_length" Type="float" />
+          <Property Name="Chest_height" Type="float" />
+          <Property Name="shelf_width" Type="float" />
+          <Property Name="sleeve_length" Type="float" />
+          <Property Name="product_length" Type="float" />
+          <Property Name="Prod_ID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Default_Size">
+          <Key>
+            <PropertyRef Name="RU_size" />
+          </Key>
+          <Property Name="RU_size" Type="int" Nullable="false" />
+          <Property Name="Waste_size" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Hips_size" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Breast_size" Type="varchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="furriery_n_fabrics">
+          <Key>
+            <PropertyRef Name="Mat_ID" />
+          </Key>
+          <Property Name="cost_per_meter_2" Type="float" Nullable="false" />
+          <Property Name="Meters_2" Type="int" Nullable="false" />
+          <Property Name="Mat_ID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Made_Of">
+          <Key>
+            <PropertyRef Name="Prod_ID" />
+            <PropertyRef Name="Mat_ID" />
+          </Key>
+          <Property Name="Prod_ID" Type="int" Nullable="false" />
+          <Property Name="Mat_ID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Materials">
+          <Key>
+            <PropertyRef Name="Mat_ID" />
+          </Key>
+          <Property Name="Mat_Name" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Mat_Type" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Mat_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Message">
+          <Key>
+            <PropertyRef Name="User_ID" />
+          </Key>
+          <Property Name="AdminName" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="MsgDateTime" Type="datetime2" Precision="3" Nullable="false" />
+          <Property Name="MsgText" Type="nvarchar" MaxLength="2000" Nullable="false" />
+          <Property Name="User_ID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Order_Position">
+          <Key>
+            <PropertyRef Name="Order_Number" />
+            <PropertyRef Name="Prod_ID" />
+          </Key>
+          <Property Name="quantity" Type="int" Nullable="false" />
+          <Property Name="Order_Number" Type="int" Nullable="false" />
+          <Property Name="Prod_ID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Order_Status">
+          <Key>
+            <PropertyRef Name="Status_id" />
+          </Key>
+          <Property Name="Status_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Status_Type" Type="varchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Orders">
+          <Key>
+            <PropertyRef Name="Order_Number" />
+          </Key>
+          <Property Name="Order_Number" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="num_of_positions" Type="int" />
+          <Property Name="Total_Price" Type="float" />
+          <Property Name="Order_date" Type="date" Nullable="false" />
+          <Property Name="User_ID" Type="int" Nullable="false" />
+          <Property Name="Status_id" Type="int" Nullable="false" />
+        </EntityType>
+        <!--Ошибки, обнаруженные при создании:
+предупреждение 6002: В таблице или представлении "database_proga_mehovoyeskiz2.dbo.Payed_Orders" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
+        <EntityType Name="Payed_Orders">
+          <Key>
+            <PropertyRef Name="Payment_date" />
+            <PropertyRef Name="Payment_sum" />
+            <PropertyRef Name="Order_Number" />
+          </Key>
+          <Property Name="Payment_date" Type="date" Nullable="false" />
+          <Property Name="Payment_sum" Type="float" Nullable="false" />
+          <Property Name="Order_Number" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Polzovatel">
+          <Key>
+            <PropertyRef Name="User_ID" />
+          </Key>
+          <Property Name="User_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UName" Type="varchar" MaxLength="1000" Nullable="false" />
+          <Property Name="ContactNumber" Type="varchar" MaxLength="1000" Nullable="false" />
+          <Property Name="Password" Type="varchar" MaxLength="1000" Nullable="false" />
+          <Property Name="EMail" Type="varchar" MaxLength="1000" Nullable="false" />
+          <Property Name="isAdmin" Type="nvarchar" MaxLength="1" Nullable="false" />
+          <Property Name="USurname" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="Product">
+          <Key>
+            <PropertyRef Name="Prod_ID" />
+          </Key>
+          <Property Name="Price" Type="float" Nullable="false" />
+          <Property Name="Is_custom" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="Prod_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Type_Id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Type">
+          <Key>
+            <PropertyRef Name="Type_Id" />
+          </Key>
+          <Property Name="Type_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Type_Name" Type="varchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <Association Name="Cart_FK">
+          <End Role="Polzovatel" Type="Self.Polzovatel" Multiplicity="1" />
+          <End Role="Cart" Type="Self.Cart" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Polzovatel">
+              <PropertyRef Name="User_ID" />
+            </Principal>
+            <Dependent Role="Cart">
+              <PropertyRef Name="User_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Cat_product_FK">
+          <End Role="Default_Size" Type="Self.Default_Size" Multiplicity="1" />
+          <End Role="Cat_product" Type="Self.Cat_product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Default_Size">
+              <PropertyRef Name="RU_size" />
+            </Principal>
+            <Dependent Role="Cat_product">
+              <PropertyRef Name="RU_size" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Catalog_FK">
+          <End Role="Cat_product" Type="Self.Cat_product" Multiplicity="1" />
+          <End Role="Catalog" Type="Self.Catalog" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Cat_product">
+              <PropertyRef Name="Prod_ID" />
+            </Principal>
+            <Dependent Role="Catalog">
+              <PropertyRef Name="Prod_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__accessori__Mat_I__440B1D61">
+          <End Role="Materials" Type="Self.Materials" Multiplicity="1" />
+          <End Role="accessories" Type="Self.accessories" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Materials">
+              <PropertyRef Name="Mat_ID" />
+            </Principal>
+            <Dependent Role="accessories">
+              <PropertyRef Name="Mat_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Cart_pos__Prod_I__5EBF139D">
+          <End Role="Product" Type="Self.Product" Multiplicity="1" />
+          <End Role="Cart_pos" Type="Self.Cart_pos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="Prod_ID" />
+            </Principal>
+            <Dependent Role="Cart_pos">
+              <PropertyRef Name="Prod_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Cart_pos__UID__5DCAEF64">
+          <End Role="Cart" Type="Self.Cart" Multiplicity="1" />
+          <End Role="Cart_pos" Type="Self.Cart_pos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cart">
+              <PropertyRef Name="User_ID" />
+            </Principal>
+            <Dependent Role="Cart_pos">
+              <PropertyRef Name="UID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Cat_produ__Prod___5629CD9C">
+          <End Role="Product" Type="Self.Product" Multiplicity="1" />
+          <End Role="Cat_product" Type="Self.Cat_product" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="Prod_ID" />
+            </Principal>
+            <Dependent Role="Cat_product">
+              <PropertyRef Name="Prod_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Custom__Prod_ID__534D60F1">
+          <End Role="Product" Type="Self.Product" Multiplicity="1" />
+          <End Role="Custom" Type="Self.Custom" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="Prod_ID" />
+            </Principal>
+            <Dependent Role="Custom">
+              <PropertyRef Name="Prod_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__furriery___Mat_I__412EB0B6">
+          <End Role="Materials" Type="Self.Materials" Multiplicity="1" />
+          <End Role="furriery_n_fabrics" Type="Self.furriery_n_fabrics" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Materials">
+              <PropertyRef Name="Mat_ID" />
+            </Principal>
+            <Dependent Role="furriery_n_fabrics">
+              <PropertyRef Name="Mat_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Made_Of__Mat_ID__628FA481">
+          <End Role="Materials" Type="Self.Materials" Multiplicity="1" />
+          <End Role="Made_Of" Type="Self.Made_Of" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Materials">
+              <PropertyRef Name="Mat_ID" />
+            </Principal>
+            <Dependent Role="Made_Of">
+              <PropertyRef Name="Mat_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Made_Of__Prod_ID__619B8048">
+          <End Role="Product" Type="Self.Product" Multiplicity="1" />
+          <End Role="Made_Of" Type="Self.Made_Of" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="Prod_ID" />
+            </Principal>
+            <Dependent Role="Made_Of">
+              <PropertyRef Name="Prod_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Order_Pos__Order__656C112C">
+          <End Role="Orders" Type="Self.Orders" Multiplicity="1" />
+          <End Role="Order_Position" Type="Self.Order_Position" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Orders">
+              <PropertyRef Name="Order_Number" />
+            </Principal>
+            <Dependent Role="Order_Position">
+              <PropertyRef Name="Order_Number" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Order_Pos__Prod___66603565">
+          <End Role="Product" Type="Self.Product" Multiplicity="1" />
+          <End Role="Order_Position" Type="Self.Order_Position" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="Prod_ID" />
+            </Principal>
+            <Dependent Role="Order_Position">
+              <PropertyRef Name="Prod_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Orders__Status_i__4D94879B">
+          <End Role="Order_Status" Type="Self.Order_Status" Multiplicity="1" />
+          <End Role="Orders" Type="Self.Orders" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Order_Status">
+              <PropertyRef Name="Status_id" />
+            </Principal>
+            <Dependent Role="Orders">
+              <PropertyRef Name="Status_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Payed_Ord__Order__5BE2A6F2">
+          <End Role="Orders" Type="Self.Orders" Multiplicity="1" />
+          <End Role="Payed_Orders" Type="Self.Payed_Orders" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Orders">
+              <PropertyRef Name="Order_Number" />
+            </Principal>
+            <Dependent Role="Payed_Orders">
+              <PropertyRef Name="Order_Number" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Product__Type_Id__5070F446">
+          <End Role="Type" Type="Self.Type" Multiplicity="1" />
+          <End Role="Product" Type="Self.Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Type">
+              <PropertyRef Name="Type_Id" />
+            </Principal>
+            <Dependent Role="Product">
+              <PropertyRef Name="Type_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Message_FK">
+          <End Role="Polzovatel" Type="Self.Polzovatel" Multiplicity="1" />
+          <End Role="Message" Type="Self.Message" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Polzovatel">
+              <PropertyRef Name="User_ID" />
+            </Principal>
+            <Dependent Role="Message">
+              <PropertyRef Name="User_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Orders_FK">
+          <End Role="Polzovatel" Type="Self.Polzovatel" Multiplicity="1" />
+          <End Role="Orders" Type="Self.Orders" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Polzovatel">
+              <PropertyRef Name="User_ID" />
+            </Principal>
+            <Dependent Role="Orders">
+              <PropertyRef Name="User_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Хранилище database_proga_mehovoyeskiz2ModelContainer">
+          <EntitySet Name="accessories" EntityType="Self.accessories" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Cart" EntityType="Self.Cart" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Cat_product" EntityType="Self.Cat_product" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Catalog" EntityType="Self.Catalog" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Custom" EntityType="Self.Custom" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Default_Size" EntityType="Self.Default_Size" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="furriery_n_fabrics" EntityType="Self.furriery_n_fabrics" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Made_Of" EntityType="Self.Made_Of" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Materials" EntityType="Self.Materials" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Message" EntityType="Self.Message" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Order_Position" EntityType="Self.Order_Position" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Order_Status" EntityType="Self.Order_Status" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Orders" EntityType="Self.Orders" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Polzovatel" EntityType="Self.Polzovatel" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Product" EntityType="Self.Product" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Type" EntityType="Self.Type" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Cart_pos" EntityType="Self.Cart_pos" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Cart_pos].[quantity] AS [quantity], 
+    [Cart_pos].[UID] AS [UID], 
+    [Cart_pos].[Prod_ID] AS [Prod_ID]
+    FROM [dbo].[Cart_pos] AS [Cart_pos]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="Payed_Orders" EntityType="Self.Payed_Orders" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Payed_Orders].[Payment_date] AS [Payment_date], 
+    [Payed_Orders].[Payment_sum] AS [Payment_sum], 
+    [Payed_Orders].[Order_Number] AS [Order_Number]
+    FROM [dbo].[Payed_Orders] AS [Payed_Orders]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="Cart_FK" Association="Self.Cart_FK">
+            <End Role="Polzovatel" EntitySet="Polzovatel" />
+            <End Role="Cart" EntitySet="Cart" />
+          </AssociationSet>
+          <AssociationSet Name="Cat_product_FK" Association="Self.Cat_product_FK">
+            <End Role="Default_Size" EntitySet="Default_Size" />
+            <End Role="Cat_product" EntitySet="Cat_product" />
+          </AssociationSet>
+          <AssociationSet Name="Catalog_FK" Association="Self.Catalog_FK">
+            <End Role="Cat_product" EntitySet="Cat_product" />
+            <End Role="Catalog" EntitySet="Catalog" />
+          </AssociationSet>
+          <AssociationSet Name="FK__accessori__Mat_I__440B1D61" Association="Self.FK__accessori__Mat_I__440B1D61">
+            <End Role="Materials" EntitySet="Materials" />
+            <End Role="accessories" EntitySet="accessories" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Cart_pos__Prod_I__5EBF139D" Association="Self.FK__Cart_pos__Prod_I__5EBF139D">
+            <End Role="Product" EntitySet="Product" />
+            <End Role="Cart_pos" EntitySet="Cart_pos" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Cart_pos__UID__5DCAEF64" Association="Self.FK__Cart_pos__UID__5DCAEF64">
+            <End Role="Cart" EntitySet="Cart" />
+            <End Role="Cart_pos" EntitySet="Cart_pos" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Cat_produ__Prod___5629CD9C" Association="Self.FK__Cat_produ__Prod___5629CD9C">
+            <End Role="Product" EntitySet="Product" />
+            <End Role="Cat_product" EntitySet="Cat_product" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Custom__Prod_ID__534D60F1" Association="Self.FK__Custom__Prod_ID__534D60F1">
+            <End Role="Product" EntitySet="Product" />
+            <End Role="Custom" EntitySet="Custom" />
+          </AssociationSet>
+          <AssociationSet Name="FK__furriery___Mat_I__412EB0B6" Association="Self.FK__furriery___Mat_I__412EB0B6">
+            <End Role="Materials" EntitySet="Materials" />
+            <End Role="furriery_n_fabrics" EntitySet="furriery_n_fabrics" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Made_Of__Mat_ID__628FA481" Association="Self.FK__Made_Of__Mat_ID__628FA481">
+            <End Role="Materials" EntitySet="Materials" />
+            <End Role="Made_Of" EntitySet="Made_Of" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Made_Of__Prod_ID__619B8048" Association="Self.FK__Made_Of__Prod_ID__619B8048">
+            <End Role="Product" EntitySet="Product" />
+            <End Role="Made_Of" EntitySet="Made_Of" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Order_Pos__Order__656C112C" Association="Self.FK__Order_Pos__Order__656C112C">
+            <End Role="Orders" EntitySet="Orders" />
+            <End Role="Order_Position" EntitySet="Order_Position" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Order_Pos__Prod___66603565" Association="Self.FK__Order_Pos__Prod___66603565">
+            <End Role="Product" EntitySet="Product" />
+            <End Role="Order_Position" EntitySet="Order_Position" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Orders__Status_i__4D94879B" Association="Self.FK__Orders__Status_i__4D94879B">
+            <End Role="Order_Status" EntitySet="Order_Status" />
+            <End Role="Orders" EntitySet="Orders" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Payed_Ord__Order__5BE2A6F2" Association="Self.FK__Payed_Ord__Order__5BE2A6F2">
+            <End Role="Orders" EntitySet="Orders" />
+            <End Role="Payed_Orders" EntitySet="Payed_Orders" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Product__Type_Id__5070F446" Association="Self.FK__Product__Type_Id__5070F446">
+            <End Role="Type" EntitySet="Type" />
+            <End Role="Product" EntitySet="Product" />
+          </AssociationSet>
+          <AssociationSet Name="Message_FK" Association="Self.Message_FK">
+            <End Role="Polzovatel" EntitySet="Polzovatel" />
+            <End Role="Message" EntitySet="Message" />
+          </AssociationSet>
+          <AssociationSet Name="Orders_FK" Association="Self.Orders_FK">
+            <End Role="Polzovatel" EntitySet="Polzovatel" />
+            <End Role="Orders" EntitySet="Orders" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="database_proga_mehovoyeskiz2Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="accessory">
+          <Key>
+            <PropertyRef Name="Mat_ID" />
+          </Key>
+          <Property Name="cost_per_pc" Type="Double" Nullable="false" />
+          <Property Name="pieces" Type="Int32" Nullable="false" />
+          <Property Name="Mat_ID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Material" Relationship="Self.FK__accessori__Mat_I__440B1D61" FromRole="accessories" ToRole="Materials" />
+        </EntityType>
+        <EntityType Name="Cart">
+          <Key>
+            <PropertyRef Name="User_ID" />
+          </Key>
+          <Property Name="Total_Price" Type="Double" Nullable="false" />
+          <Property Name="num_of_positions" Type="Int32" Nullable="false" />
+          <Property Name="User_ID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Polzovatel" Relationship="Self.Cart_FK" FromRole="Cart" ToRole="Polzovatel" />
+          <NavigationProperty Name="Cart_pos" Relationship="Self.FK__Cart_pos__UID__5DCAEF64" FromRole="Cart" ToRole="Cart_pos" />
+        </EntityType>
+        <EntityType Name="Cat_product">
+          <Key>
+            <PropertyRef Name="Prod_ID" />
+          </Key>
+          <Property Name="Prod_NAME" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Prod_Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Prod_ID" Type="Int32" Nullable="false" />
+          <Property Name="Prod_Articul" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="RU_size" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Default_Size" Relationship="Self.Cat_product_FK" FromRole="Cat_product" ToRole="Default_Size" />
+          <NavigationProperty Name="Catalog" Relationship="Self.Catalog_FK" FromRole="Cat_product" ToRole="Catalog" />
+          <NavigationProperty Name="Product" Relationship="Self.FK__Cat_produ__Prod___5629CD9C" FromRole="Cat_product" ToRole="Product" />
+        </EntityType>
+        <EntityType Name="Catalog">
+          <Key>
+            <PropertyRef Name="Prod_ID" />
+          </Key>
+          <Property Name="Prod_Name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="PhotoHyperlink" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Prod_ID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Cat_product" Relationship="Self.Catalog_FK" FromRole="Catalog" ToRole="Cat_product" />
+        </EntityType>
+        <EntityType Name="Custom">
+          <Key>
+            <PropertyRef Name="Prod_ID" />
+          </Key>
+          <Property Name="Breast" Type="Double" />
+          <Property Name="Waste" Type="Double" />
+          <Property Name="Back_width" Type="Double" />
+          <Property Name="Hips" Type="Double" />
+          <Property Name="shelf_height" Type="Double" />
+          <Property Name="arm_length" Type="Double" />
+          <Property Name="Chest_height" Type="Double" />
+          <Property Name="shelf_width" Type="Double" />
+          <Property Name="sleeve_length" Type="Double" />
+          <Property Name="product_length" Type="Double" />
+          <Property Name="Prod_ID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Product" Relationship="Self.FK__Custom__Prod_ID__534D60F1" FromRole="Custom" ToRole="Product" />
+        </EntityType>
+        <EntityType Name="Default_Size">
+          <Key>
+            <PropertyRef Name="RU_size" />
+          </Key>
+          <Property Name="RU_size" Type="Int32" Nullable="false" />
+          <Property Name="Waste_size" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Hips_size" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Breast_size" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Cat_product" Relationship="Self.Cat_product_FK" FromRole="Default_Size" ToRole="Cat_product" />
+        </EntityType>
+        <EntityType Name="furriery_n_fabrics">
+          <Key>
+            <PropertyRef Name="Mat_ID" />
+          </Key>
+          <Property Name="cost_per_meter_2" Type="Double" Nullable="false" />
+          <Property Name="Meters_2" Type="Int32" Nullable="false" />
+          <Property Name="Mat_ID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Material" Relationship="Self.FK__furriery___Mat_I__412EB0B6" FromRole="furriery_n_fabrics" ToRole="Materials" />
+        </EntityType>
+        <EntityType Name="Material">
+          <Key>
+            <PropertyRef Name="Mat_ID" />
+          </Key>
+          <Property Name="Mat_Name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Mat_Type" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Mat_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="accessory" Relationship="Self.FK__accessori__Mat_I__440B1D61" FromRole="Materials" ToRole="accessories" />
+          <NavigationProperty Name="furriery_n_fabrics" Relationship="Self.FK__furriery___Mat_I__412EB0B6" FromRole="Materials" ToRole="furriery_n_fabrics" />
+          <NavigationProperty Name="Products" Relationship="Self.Made_Of" FromRole="Materials" ToRole="Product" />
+        </EntityType>
+        <EntityType Name="Message">
+          <Key>
+            <PropertyRef Name="User_ID" />
+          </Key>
+          <Property Name="AdminName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="MsgDateTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="MsgText" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="User_ID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Polzovatel" Relationship="Self.Message_FK" FromRole="Message" ToRole="Polzovatel" />
+        </EntityType>
+        <EntityType Name="Order_Position">
+          <Key>
+            <PropertyRef Name="Order_Number" />
+            <PropertyRef Name="Prod_ID" />
+          </Key>
+          <Property Name="quantity" Type="Int32" Nullable="false" />
+          <Property Name="Order_Number" Type="Int32" Nullable="false" />
+          <Property Name="Prod_ID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Order" Relationship="Self.FK__Order_Pos__Order__656C112C" FromRole="Order_Position" ToRole="Orders" />
+          <NavigationProperty Name="Product" Relationship="Self.FK__Order_Pos__Prod___66603565" FromRole="Order_Position" ToRole="Product" />
+        </EntityType>
+        <EntityType Name="Order_Status">
+          <Key>
+            <PropertyRef Name="Status_id" />
+          </Key>
+          <Property Name="Status_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Status_Type" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Orders" Relationship="Self.FK__Orders__Status_i__4D94879B" FromRole="Order_Status" ToRole="Orders" />
+        </EntityType>
+        <EntityType Name="Order">
+          <Key>
+            <PropertyRef Name="Order_Number" />
+          </Key>
+          <Property Name="Order_Number" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="num_of_positions" Type="Int32" />
+          <Property Name="Total_Price" Type="Double" />
+          <Property Name="Order_date" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="User_ID" Type="Int32" Nullable="false" />
+          <Property Name="Status_id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Order_Position" Relationship="Self.FK__Order_Pos__Order__656C112C" FromRole="Orders" ToRole="Order_Position" />
+          <NavigationProperty Name="Order_Status" Relationship="Self.FK__Orders__Status_i__4D94879B" FromRole="Orders" ToRole="Order_Status" />
+          <NavigationProperty Name="Payed_Orders" Relationship="Self.FK__Payed_Ord__Order__5BE2A6F2" FromRole="Orders" ToRole="Payed_Orders" />
+          <NavigationProperty Name="Polzovatel" Relationship="Self.Orders_FK" FromRole="Orders" ToRole="Polzovatel" />
+        </EntityType>
+        <EntityType Name="Polzovatel">
+          <Key>
+            <PropertyRef Name="User_ID" />
+          </Key>
+          <Property Name="User_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UName" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ContactNumber" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="EMail" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="isAdmin" Type="String" MaxLength="1" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="USurname" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Cart" Relationship="Self.Cart_FK" FromRole="Polzovatel" ToRole="Cart" />
+          <NavigationProperty Name="Message" Relationship="Self.Message_FK" FromRole="Polzovatel" ToRole="Message" />
+          <NavigationProperty Name="Orders" Relationship="Self.Orders_FK" FromRole="Polzovatel" ToRole="Orders" />
+        </EntityType>
+        <EntityType Name="Product">
+          <Key>
+            <PropertyRef Name="Prod_ID" />
+          </Key>
+          <Property Name="Price" Type="Double" Nullable="false" />
+          <Property Name="Is_custom" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="Prod_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Type_Id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Cat_product" Relationship="Self.FK__Cat_produ__Prod___5629CD9C" FromRole="Product" ToRole="Cat_product" />
+          <NavigationProperty Name="Custom" Relationship="Self.FK__Custom__Prod_ID__534D60F1" FromRole="Product" ToRole="Custom" />
+          <NavigationProperty Name="Order_Position" Relationship="Self.FK__Order_Pos__Prod___66603565" FromRole="Product" ToRole="Order_Position" />
+          <NavigationProperty Name="Cart_pos" Relationship="Self.FK__Cart_pos__Prod_I__5EBF139D" FromRole="Product" ToRole="Cart_pos" />
+          <NavigationProperty Name="Type" Relationship="Self.FK__Product__Type_Id__5070F446" FromRole="Product" ToRole="Type" />
+          <NavigationProperty Name="Materials" Relationship="Self.Made_Of" FromRole="Product" ToRole="Materials" />
+        </EntityType>
+        <EntityType Name="Type">
+          <Key>
+            <PropertyRef Name="Type_Id" />
+          </Key>
+          <Property Name="Type_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Type_Name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Products" Relationship="Self.FK__Product__Type_Id__5070F446" FromRole="Type" ToRole="Product" />
+        </EntityType>
+        <EntityType Name="Cart_pos">
+          <Key>
+            <PropertyRef Name="quantity" />
+            <PropertyRef Name="UID" />
+            <PropertyRef Name="Prod_ID" />
+          </Key>
+          <Property Name="quantity" Type="Int32" Nullable="false" />
+          <Property Name="UID" Type="Int32" Nullable="false" />
+          <Property Name="Prod_ID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Cart" Relationship="Self.FK__Cart_pos__UID__5DCAEF64" FromRole="Cart_pos" ToRole="Cart" />
+          <NavigationProperty Name="Product" Relationship="Self.FK__Cart_pos__Prod_I__5EBF139D" FromRole="Cart_pos" ToRole="Product" />
+        </EntityType>
+        <EntityType Name="Payed_Orders">
+          <Key>
+            <PropertyRef Name="Payment_date" />
+            <PropertyRef Name="Payment_sum" />
+            <PropertyRef Name="Order_Number" />
+          </Key>
+          <Property Name="Payment_date" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Payment_sum" Type="Double" Nullable="false" />
+          <Property Name="Order_Number" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Order" Relationship="Self.FK__Payed_Ord__Order__5BE2A6F2" FromRole="Payed_Orders" ToRole="Orders" />
+        </EntityType>
+        <Association Name="FK__accessori__Mat_I__440B1D61">
+          <End Role="Materials" Type="Self.Material" Multiplicity="1" />
+          <End Role="accessories" Type="Self.accessory" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Materials">
+              <PropertyRef Name="Mat_ID" />
+            </Principal>
+            <Dependent Role="accessories">
+              <PropertyRef Name="Mat_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Cart_FK">
+          <End Role="Polzovatel" Type="Self.Polzovatel" Multiplicity="1" />
+          <End Role="Cart" Type="Self.Cart" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Polzovatel">
+              <PropertyRef Name="User_ID" />
+            </Principal>
+            <Dependent Role="Cart">
+              <PropertyRef Name="User_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Cart_pos__UID__5DCAEF64">
+          <End Role="Cart" Type="Self.Cart" Multiplicity="1" />
+          <End Role="Cart_pos" Type="Self.Cart_pos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cart">
+              <PropertyRef Name="User_ID" />
+            </Principal>
+            <Dependent Role="Cart_pos">
+              <PropertyRef Name="UID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Cat_product_FK">
+          <End Role="Default_Size" Type="Self.Default_Size" Multiplicity="1" />
+          <End Role="Cat_product" Type="Self.Cat_product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Default_Size">
+              <PropertyRef Name="RU_size" />
+            </Principal>
+            <Dependent Role="Cat_product">
+              <PropertyRef Name="RU_size" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Catalog_FK">
+          <End Role="Cat_product" Type="Self.Cat_product" Multiplicity="1" />
+          <End Role="Catalog" Type="Self.Catalog" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Cat_product">
+              <PropertyRef Name="Prod_ID" />
+            </Principal>
+            <Dependent Role="Catalog">
+              <PropertyRef Name="Prod_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Cat_produ__Prod___5629CD9C">
+          <End Role="Product" Type="Self.Product" Multiplicity="1" />
+          <End Role="Cat_product" Type="Self.Cat_product" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="Prod_ID" />
+            </Principal>
+            <Dependent Role="Cat_product">
+              <PropertyRef Name="Prod_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Custom__Prod_ID__534D60F1">
+          <End Role="Product" Type="Self.Product" Multiplicity="1" />
+          <End Role="Custom" Type="Self.Custom" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="Prod_ID" />
+            </Principal>
+            <Dependent Role="Custom">
+              <PropertyRef Name="Prod_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__furriery___Mat_I__412EB0B6">
+          <End Role="Materials" Type="Self.Material" Multiplicity="1" />
+          <End Role="furriery_n_fabrics" Type="Self.furriery_n_fabrics" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Materials">
+              <PropertyRef Name="Mat_ID" />
+            </Principal>
+            <Dependent Role="furriery_n_fabrics">
+              <PropertyRef Name="Mat_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Message_FK">
+          <End Role="Polzovatel" Type="Self.Polzovatel" Multiplicity="1" />
+          <End Role="Message" Type="Self.Message" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Polzovatel">
+              <PropertyRef Name="User_ID" />
+            </Principal>
+            <Dependent Role="Message">
+              <PropertyRef Name="User_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Order_Pos__Order__656C112C">
+          <End Role="Orders" Type="Self.Order" Multiplicity="1" />
+          <End Role="Order_Position" Type="Self.Order_Position" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Orders">
+              <PropertyRef Name="Order_Number" />
+            </Principal>
+            <Dependent Role="Order_Position">
+              <PropertyRef Name="Order_Number" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Order_Pos__Prod___66603565">
+          <End Role="Product" Type="Self.Product" Multiplicity="1" />
+          <End Role="Order_Position" Type="Self.Order_Position" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="Prod_ID" />
+            </Principal>
+            <Dependent Role="Order_Position">
+              <PropertyRef Name="Prod_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Orders__Status_i__4D94879B">
+          <End Role="Order_Status" Type="Self.Order_Status" Multiplicity="1" />
+          <End Role="Orders" Type="Self.Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Order_Status">
+              <PropertyRef Name="Status_id" />
+            </Principal>
+            <Dependent Role="Orders">
+              <PropertyRef Name="Status_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Payed_Ord__Order__5BE2A6F2">
+          <End Role="Orders" Type="Self.Order" Multiplicity="1" />
+          <End Role="Payed_Orders" Type="Self.Payed_Orders" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Orders">
+              <PropertyRef Name="Order_Number" />
+            </Principal>
+            <Dependent Role="Payed_Orders">
+              <PropertyRef Name="Order_Number" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Orders_FK">
+          <End Role="Polzovatel" Type="Self.Polzovatel" Multiplicity="1" />
+          <End Role="Orders" Type="Self.Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Polzovatel">
+              <PropertyRef Name="User_ID" />
+            </Principal>
+            <Dependent Role="Orders">
+              <PropertyRef Name="User_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Cart_pos__Prod_I__5EBF139D">
+          <End Role="Product" Type="Self.Product" Multiplicity="1" />
+          <End Role="Cart_pos" Type="Self.Cart_pos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="Prod_ID" />
+            </Principal>
+            <Dependent Role="Cart_pos">
+              <PropertyRef Name="Prod_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Product__Type_Id__5070F446">
+          <End Role="Type" Type="Self.Type" Multiplicity="1" />
+          <End Role="Product" Type="Self.Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Type">
+              <PropertyRef Name="Type_Id" />
+            </Principal>
+            <Dependent Role="Product">
+              <PropertyRef Name="Type_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Made_Of">
+          <End Role="Materials" Type="Self.Material" Multiplicity="*" />
+          <End Role="Product" Type="Self.Product" Multiplicity="*" />
+        </Association>
+        <EntityContainer Name="database_proga_mehovoyeskiz2Entities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="accessories" EntityType="Self.accessory" />
+          <EntitySet Name="Carts" EntityType="Self.Cart" />
+          <EntitySet Name="Cat_product" EntityType="Self.Cat_product" />
+          <EntitySet Name="Catalogs" EntityType="Self.Catalog" />
+          <EntitySet Name="Customs" EntityType="Self.Custom" />
+          <EntitySet Name="Default_Size" EntityType="Self.Default_Size" />
+          <EntitySet Name="furriery_n_fabrics" EntityType="Self.furriery_n_fabrics" />
+          <EntitySet Name="Materials" EntityType="Self.Material" />
+          <EntitySet Name="Messages" EntityType="Self.Message" />
+          <EntitySet Name="Order_Position" EntityType="Self.Order_Position" />
+          <EntitySet Name="Order_Status" EntityType="Self.Order_Status" />
+          <EntitySet Name="Orders" EntityType="Self.Order" />
+          <EntitySet Name="Polzovatels" EntityType="Self.Polzovatel" />
+          <EntitySet Name="Products" EntityType="Self.Product" />
+          <EntitySet Name="Types" EntityType="Self.Type" />
+          <EntitySet Name="Cart_pos" EntityType="Self.Cart_pos" />
+          <EntitySet Name="Payed_Orders" EntityType="Self.Payed_Orders" />
+          <AssociationSet Name="FK__accessori__Mat_I__440B1D61" Association="Self.FK__accessori__Mat_I__440B1D61">
+            <End Role="Materials" EntitySet="Materials" />
+            <End Role="accessories" EntitySet="accessories" />
+          </AssociationSet>
+          <AssociationSet Name="Cart_FK" Association="Self.Cart_FK">
+            <End Role="Polzovatel" EntitySet="Polzovatels" />
+            <End Role="Cart" EntitySet="Carts" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Cart_pos__UID__5DCAEF64" Association="Self.FK__Cart_pos__UID__5DCAEF64">
+            <End Role="Cart" EntitySet="Carts" />
+            <End Role="Cart_pos" EntitySet="Cart_pos" />
+          </AssociationSet>
+          <AssociationSet Name="Cat_product_FK" Association="Self.Cat_product_FK">
+            <End Role="Default_Size" EntitySet="Default_Size" />
+            <End Role="Cat_product" EntitySet="Cat_product" />
+          </AssociationSet>
+          <AssociationSet Name="Catalog_FK" Association="Self.Catalog_FK">
+            <End Role="Cat_product" EntitySet="Cat_product" />
+            <End Role="Catalog" EntitySet="Catalogs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Cat_produ__Prod___5629CD9C" Association="Self.FK__Cat_produ__Prod___5629CD9C">
+            <End Role="Product" EntitySet="Products" />
+            <End Role="Cat_product" EntitySet="Cat_product" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Custom__Prod_ID__534D60F1" Association="Self.FK__Custom__Prod_ID__534D60F1">
+            <End Role="Product" EntitySet="Products" />
+            <End Role="Custom" EntitySet="Customs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__furriery___Mat_I__412EB0B6" Association="Self.FK__furriery___Mat_I__412EB0B6">
+            <End Role="Materials" EntitySet="Materials" />
+            <End Role="furriery_n_fabrics" EntitySet="furriery_n_fabrics" />
+          </AssociationSet>
+          <AssociationSet Name="Message_FK" Association="Self.Message_FK">
+            <End Role="Polzovatel" EntitySet="Polzovatels" />
+            <End Role="Message" EntitySet="Messages" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Order_Pos__Order__656C112C" Association="Self.FK__Order_Pos__Order__656C112C">
+            <End Role="Orders" EntitySet="Orders" />
+            <End Role="Order_Position" EntitySet="Order_Position" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Order_Pos__Prod___66603565" Association="Self.FK__Order_Pos__Prod___66603565">
+            <End Role="Product" EntitySet="Products" />
+            <End Role="Order_Position" EntitySet="Order_Position" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Orders__Status_i__4D94879B" Association="Self.FK__Orders__Status_i__4D94879B">
+            <End Role="Order_Status" EntitySet="Order_Status" />
+            <End Role="Orders" EntitySet="Orders" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Payed_Ord__Order__5BE2A6F2" Association="Self.FK__Payed_Ord__Order__5BE2A6F2">
+            <End Role="Orders" EntitySet="Orders" />
+            <End Role="Payed_Orders" EntitySet="Payed_Orders" />
+          </AssociationSet>
+          <AssociationSet Name="Orders_FK" Association="Self.Orders_FK">
+            <End Role="Polzovatel" EntitySet="Polzovatels" />
+            <End Role="Orders" EntitySet="Orders" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Cart_pos__Prod_I__5EBF139D" Association="Self.FK__Cart_pos__Prod_I__5EBF139D">
+            <End Role="Product" EntitySet="Products" />
+            <End Role="Cart_pos" EntitySet="Cart_pos" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Product__Type_Id__5070F446" Association="Self.FK__Product__Type_Id__5070F446">
+            <End Role="Type" EntitySet="Types" />
+            <End Role="Product" EntitySet="Products" />
+          </AssociationSet>
+          <AssociationSet Name="Made_Of" Association="Self.Made_Of">
+            <End Role="Materials" EntitySet="Materials" />
+            <End Role="Product" EntitySet="Products" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Хранилище database_proga_mehovoyeskiz2ModelContainer" CdmEntityContainer="database_proga_mehovoyeskiz2Entities">
+          <EntitySetMapping Name="accessories">
+            <EntityTypeMapping TypeName="database_proga_mehovoyeskiz2Model.accessory">
+              <MappingFragment StoreEntitySet="accessories">
+                <ScalarProperty Name="cost_per_pc" ColumnName="cost_per_pc" />
+                <ScalarProperty Name="pieces" ColumnName="pieces" />
+                <ScalarProperty Name="Mat_ID" ColumnName="Mat_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Carts">
+            <EntityTypeMapping TypeName="database_proga_mehovoyeskiz2Model.Cart">
+              <MappingFragment StoreEntitySet="Cart">
+                <ScalarProperty Name="Total_Price" ColumnName="Total_Price" />
+                <ScalarProperty Name="num_of_positions" ColumnName="num_of_positions" />
+                <ScalarProperty Name="User_ID" ColumnName="User_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Cat_product">
+            <EntityTypeMapping TypeName="database_proga_mehovoyeskiz2Model.Cat_product">
+              <MappingFragment StoreEntitySet="Cat_product">
+                <ScalarProperty Name="Prod_NAME" ColumnName="Prod_NAME" />
+                <ScalarProperty Name="Prod_Description" ColumnName="Prod_Description" />
+                <ScalarProperty Name="Prod_ID" ColumnName="Prod_ID" />
+                <ScalarProperty Name="Prod_Articul" ColumnName="Prod_Articul" />
+                <ScalarProperty Name="RU_size" ColumnName="RU_size" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Catalogs">
+            <EntityTypeMapping TypeName="database_proga_mehovoyeskiz2Model.Catalog">
+              <MappingFragment StoreEntitySet="Catalog">
+                <ScalarProperty Name="Prod_Name" ColumnName="Prod_Name" />
+                <ScalarProperty Name="PhotoHyperlink" ColumnName="PhotoHyperlink" />
+                <ScalarProperty Name="Prod_ID" ColumnName="Prod_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Customs">
+            <EntityTypeMapping TypeName="database_proga_mehovoyeskiz2Model.Custom">
+              <MappingFragment StoreEntitySet="Custom">
+                <ScalarProperty Name="Breast" ColumnName="Breast" />
+                <ScalarProperty Name="Waste" ColumnName="Waste" />
+                <ScalarProperty Name="Back_width" ColumnName="Back_width" />
+                <ScalarProperty Name="Hips" ColumnName="Hips" />
+                <ScalarProperty Name="shelf_height" ColumnName="shelf_height" />
+                <ScalarProperty Name="arm_length" ColumnName="arm_length" />
+                <ScalarProperty Name="Chest_height" ColumnName="Chest_height" />
+                <ScalarProperty Name="shelf_width" ColumnName="shelf_width" />
+                <ScalarProperty Name="sleeve_length" ColumnName="sleeve_length" />
+                <ScalarProperty Name="product_length" ColumnName="product_length" />
+                <ScalarProperty Name="Prod_ID" ColumnName="Prod_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Default_Size">
+            <EntityTypeMapping TypeName="database_proga_mehovoyeskiz2Model.Default_Size">
+              <MappingFragment StoreEntitySet="Default_Size">
+                <ScalarProperty Name="RU_size" ColumnName="RU_size" />
+                <ScalarProperty Name="Waste_size" ColumnName="Waste_size" />
+                <ScalarProperty Name="Hips_size" ColumnName="Hips_size" />
+                <ScalarProperty Name="Breast_size" ColumnName="Breast_size" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="furriery_n_fabrics">
+            <EntityTypeMapping TypeName="database_proga_mehovoyeskiz2Model.furriery_n_fabrics">
+              <MappingFragment StoreEntitySet="furriery_n_fabrics">
+                <ScalarProperty Name="cost_per_meter_2" ColumnName="cost_per_meter_2" />
+                <ScalarProperty Name="Meters_2" ColumnName="Meters_2" />
+                <ScalarProperty Name="Mat_ID" ColumnName="Mat_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Materials">
+            <EntityTypeMapping TypeName="database_proga_mehovoyeskiz2Model.Material">
+              <MappingFragment StoreEntitySet="Materials">
+                <ScalarProperty Name="Mat_Name" ColumnName="Mat_Name" />
+                <ScalarProperty Name="Mat_Type" ColumnName="Mat_Type" />
+                <ScalarProperty Name="Mat_ID" ColumnName="Mat_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Messages">
+            <EntityTypeMapping TypeName="database_proga_mehovoyeskiz2Model.Message">
+              <MappingFragment StoreEntitySet="Message">
+                <ScalarProperty Name="AdminName" ColumnName="AdminName" />
+                <ScalarProperty Name="MsgDateTime" ColumnName="MsgDateTime" />
+                <ScalarProperty Name="MsgText" ColumnName="MsgText" />
+                <ScalarProperty Name="User_ID" ColumnName="User_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Order_Position">
+            <EntityTypeMapping TypeName="database_proga_mehovoyeskiz2Model.Order_Position">
+              <MappingFragment StoreEntitySet="Order_Position">
+                <ScalarProperty Name="quantity" ColumnName="quantity" />
+                <ScalarProperty Name="Order_Number" ColumnName="Order_Number" />
+                <ScalarProperty Name="Prod_ID" ColumnName="Prod_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Order_Status">
+            <EntityTypeMapping TypeName="database_proga_mehovoyeskiz2Model.Order_Status">
+              <MappingFragment StoreEntitySet="Order_Status">
+                <ScalarProperty Name="Status_id" ColumnName="Status_id" />
+                <ScalarProperty Name="Status_Type" ColumnName="Status_Type" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Orders">
+            <EntityTypeMapping TypeName="database_proga_mehovoyeskiz2Model.Order">
+              <MappingFragment StoreEntitySet="Orders">
+                <ScalarProperty Name="Order_Number" ColumnName="Order_Number" />
+                <ScalarProperty Name="num_of_positions" ColumnName="num_of_positions" />
+                <ScalarProperty Name="Total_Price" ColumnName="Total_Price" />
+                <ScalarProperty Name="Order_date" ColumnName="Order_date" />
+                <ScalarProperty Name="User_ID" ColumnName="User_ID" />
+                <ScalarProperty Name="Status_id" ColumnName="Status_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Polzovatels">
+            <EntityTypeMapping TypeName="database_proga_mehovoyeskiz2Model.Polzovatel">
+              <MappingFragment StoreEntitySet="Polzovatel">
+                <ScalarProperty Name="User_ID" ColumnName="User_ID" />
+                <ScalarProperty Name="UName" ColumnName="UName" />
+                <ScalarProperty Name="ContactNumber" ColumnName="ContactNumber" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="EMail" ColumnName="EMail" />
+                <ScalarProperty Name="isAdmin" ColumnName="isAdmin" />
+                <ScalarProperty Name="USurname" ColumnName="USurname" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Products">
+            <EntityTypeMapping TypeName="database_proga_mehovoyeskiz2Model.Product">
+              <MappingFragment StoreEntitySet="Product">
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="Is_custom" ColumnName="Is_custom" />
+                <ScalarProperty Name="Prod_ID" ColumnName="Prod_ID" />
+                <ScalarProperty Name="Type_Id" ColumnName="Type_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Types">
+            <EntityTypeMapping TypeName="database_proga_mehovoyeskiz2Model.Type">
+              <MappingFragment StoreEntitySet="Type">
+                <ScalarProperty Name="Type_Id" ColumnName="Type_Id" />
+                <ScalarProperty Name="Type_Name" ColumnName="Type_Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Cart_pos">
+            <EntityTypeMapping TypeName="database_proga_mehovoyeskiz2Model.Cart_pos">
+              <MappingFragment StoreEntitySet="Cart_pos">
+                <ScalarProperty Name="quantity" ColumnName="quantity" />
+                <ScalarProperty Name="UID" ColumnName="UID" />
+                <ScalarProperty Name="Prod_ID" ColumnName="Prod_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Payed_Orders">
+            <EntityTypeMapping TypeName="database_proga_mehovoyeskiz2Model.Payed_Orders">
+              <MappingFragment StoreEntitySet="Payed_Orders">
+                <ScalarProperty Name="Payment_date" ColumnName="Payment_date" />
+                <ScalarProperty Name="Payment_sum" ColumnName="Payment_sum" />
+                <ScalarProperty Name="Order_Number" ColumnName="Order_Number" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="Made_Of" TypeName="database_proga_mehovoyeskiz2Model.Made_Of" StoreEntitySet="Made_Of">
+            <EndProperty Name="Materials">
+              <ScalarProperty Name="Mat_ID" ColumnName="Mat_ID" />
+            </EndProperty>
+            <EndProperty Name="Product">
+              <ScalarProperty Name="Prod_ID" ColumnName="Prod_ID" />
+            </EndProperty>
+          </AssociationSetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="fb48337248f841d7a044058bbf11b1a5" Name="Diagram1">
+        <EntityTypeShape EntityType="database_proga_mehovoyeskiz2Model.accessory" Width="1.5" PointX="3" PointY="8.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="database_proga_mehovoyeskiz2Model.Cart" Width="1.5" PointX="9" PointY="4.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="database_proga_mehovoyeskiz2Model.Cat_product" Width="1.5" PointX="8.25" PointY="8" IsExpanded="true" />
+        <EntityTypeShape EntityType="database_proga_mehovoyeskiz2Model.Catalog" Width="1.5" PointX="10.5" PointY="12.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="database_proga_mehovoyeskiz2Model.Custom" Width="1.5" PointX="8.25" PointY="11.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="database_proga_mehovoyeskiz2Model.Default_Size" Width="1.5" PointX="6" PointY="13.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="database_proga_mehovoyeskiz2Model.furriery_n_fabrics" Width="1.5" PointX="3" PointY="10.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="database_proga_mehovoyeskiz2Model.Material" Width="1.5" PointX="0.75" PointY="9.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="database_proga_mehovoyeskiz2Model.Message" Width="1.5" PointX="9" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="database_proga_mehovoyeskiz2Model.Order_Position" Width="1.5" PointX="11.25" PointY="9.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="database_proga_mehovoyeskiz2Model.Order_Status" Width="1.5" PointX="6.75" PointY="17.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="database_proga_mehovoyeskiz2Model.Order" Width="1.5" PointX="9" PointY="16.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="database_proga_mehovoyeskiz2Model.Polzovatel" Width="1.5" PointX="6.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="database_proga_mehovoyeskiz2Model.Product" Width="1.5" PointX="6" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="database_proga_mehovoyeskiz2Model.Type" Width="1.5" PointX="3.75" PointY="5.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="database_proga_mehovoyeskiz2Model.Cart_pos" Width="1.5" PointX="11.25" PointY="6.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="database_proga_mehovoyeskiz2Model.Payed_Orders" Width="1.5" PointX="11.25" PointY="17.375" IsExpanded="true" />
+        <AssociationConnector Association="database_proga_mehovoyeskiz2Model.FK__accessori__Mat_I__440B1D61" ManuallyRouted="false" />
+        <AssociationConnector Association="database_proga_mehovoyeskiz2Model.Cart_FK" ManuallyRouted="false" />
+        <AssociationConnector Association="database_proga_mehovoyeskiz2Model.FK__Cart_pos__UID__5DCAEF64" ManuallyRouted="false" />
+        <AssociationConnector Association="database_proga_mehovoyeskiz2Model.Cat_product_FK" ManuallyRouted="false" />
+        <AssociationConnector Association="database_proga_mehovoyeskiz2Model.Catalog_FK" ManuallyRouted="false" />
+        <AssociationConnector Association="database_proga_mehovoyeskiz2Model.FK__Cat_produ__Prod___5629CD9C" ManuallyRouted="false" />
+        <AssociationConnector Association="database_proga_mehovoyeskiz2Model.FK__Custom__Prod_ID__534D60F1" ManuallyRouted="false" />
+        <AssociationConnector Association="database_proga_mehovoyeskiz2Model.FK__furriery___Mat_I__412EB0B6" ManuallyRouted="false" />
+        <AssociationConnector Association="database_proga_mehovoyeskiz2Model.Message_FK" ManuallyRouted="false" />
+        <AssociationConnector Association="database_proga_mehovoyeskiz2Model.FK__Order_Pos__Order__656C112C" ManuallyRouted="false" />
+        <AssociationConnector Association="database_proga_mehovoyeskiz2Model.FK__Order_Pos__Prod___66603565" ManuallyRouted="false" />
+        <AssociationConnector Association="database_proga_mehovoyeskiz2Model.FK__Orders__Status_i__4D94879B" ManuallyRouted="false" />
+        <AssociationConnector Association="database_proga_mehovoyeskiz2Model.FK__Payed_Ord__Order__5BE2A6F2" ManuallyRouted="false" />
+        <AssociationConnector Association="database_proga_mehovoyeskiz2Model.Orders_FK" ManuallyRouted="false" />
+        <AssociationConnector Association="database_proga_mehovoyeskiz2Model.FK__Cart_pos__Prod_I__5EBF139D" ManuallyRouted="false" />
+        <AssociationConnector Association="database_proga_mehovoyeskiz2Model.FK__Product__Type_Id__5070F446" ManuallyRouted="false" />
+        <AssociationConnector Association="database_proga_mehovoyeskiz2Model.Made_Of" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

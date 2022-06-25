@@ -1,0 +1,67 @@
+﻿<Window x:Class="Project_Mehovoi_Eskiz.RegistrationWindow"
+xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+xmlns:MaterialDesighn="http://materialdesigninxaml.net/winfx/xaml/themes"
+xmlns:local="clr-namespace:Project_Mehovoi_Eskiz"
+mc:Ignorable="d"
+Title="RegistrationWindow" Height="450" Width="800" WindowStartupLocation="CenterScreen" WindowStyle="None" ResizeMode="NoResize">
+    <Grid>
+        <Grid.Background>
+            <LinearGradientBrush StartPoint="0.1,0" EndPoint="0.9,1">
+                <GradientStop Color="White" Offset="1"/>
+                <GradientStop Color="AliceBlue" Offset="0"/>
+            </LinearGradientBrush>
+        </Grid.Background>
+
+        <Border Height="395" VerticalAlignment="Bottom" CornerRadius="120 0 0 0">
+            <Border.Background>
+                <LinearGradientBrush StartPoint="0.1,0" EndPoint="0.9,1">
+                    <GradientStop Color="#600000" Offset="1"/>
+                    <GradientStop Color="MediumPurple" Offset="0"/>
+                </LinearGradientBrush>
+            </Border.Background>
+            <StackPanel Orientation="Horizontal">
+                <StackPanel  Margin="10 10 140 250">
+                    <Button Name = "GoToTheMainWindow" Margin="30 30 20 10" Style = "{StaticResource MaterialDesignFloatingActionButton}" 
+                            Background="{x:Null}" ToolTip="Вернуться к авторизации" Click="GoToTheMainWindow_Click"  BorderBrush="Maroon">
+                        <MaterialDesighn:PackIcon Kind="ArrowBack" Foreground="White" Width="30" Height="30"/>
+                    </Button>
+                </StackPanel>
+                <StackPanel Width="300" Height="390" HorizontalAlignment="Center" Margin="0 15">
+                    <TextBlock Text="Добро пожаловать!" Margin="5" Foreground="White" TextAlignment="Center" FontSize="13" FontFamily="NFSCarbon(FONT BY LYAJKA)" />
+                    <StackPanel Orientation="Horizontal">
+                        <MaterialDesighn:PackIcon Kind="Email" Width="25" Height="25" Foreground="White" Margin="0 0 0 0"/>
+                        <TextBox x:Name="emailField" Margin="10 0 0 0" MaterialDesighn:HintAssist.Hint="Email" Foreground="White" Width="250" BorderBrush="White" CaretBrush="MediumPurple" SelectionBrush="MediumPurple"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Margin="0 3 0 0">
+                        <MaterialDesighn:PackIcon Kind="UserAdd" Width="25" Height="25" Foreground="White" Margin="0 16 0 0"/>
+                        <TextBox x:Name="nameField" Margin="10 15 0 0" MaterialDesighn:HintAssist.Hint="Имя" Foreground="White" Width="250" BorderBrush="White" CaretBrush="MediumPurple" SelectionBrush="MediumPurple"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Margin="0 20 0 0">
+                        <TextBox x:Name="surnameField" Margin="35 0 0 0" MaterialDesighn:HintAssist.Hint="Фамилия" Foreground="White" Width="250" BorderBrush="White" CaretBrush="MediumPurple" SelectionBrush="MediumPurple"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <MaterialDesighn:PackIcon Kind="Phone" Width="25" Height="25" Foreground="White" Margin="0 16 0 0"/>
+                        <TextBox x:Name="numberField" Margin="10 15 0 0" MaterialDesighn:HintAssist.Hint="Контактный номер" Foreground="White" Width="250" BorderBrush="White" CaretBrush="MediumPurple" SelectionBrush="MediumPurple"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Margin="0 3 0 0">
+                        <MaterialDesighn:PackIcon Kind="Password" Width="25" Height="25" Foreground="White" Margin="0 16 0 0"/>
+                        <PasswordBox x:Name="passwordField" Margin="10 15 0 0" MaterialDesighn:HintAssist.Hint="Пароль" Foreground="White" Width="250" BorderBrush="White" CaretBrush="MediumPurple" SelectionBrush="MediumPurple"/>
+                    </StackPanel>
+                    <TextBlock Text="Какие рассылки Вы хотели бы получать?" Margin="10" Foreground="White" TextAlignment="Center" FontSize="10"/>
+                    <CheckBox Content="Скидки и специальные предложения" HorizontalAlignment="Left" Margin="10,0,0,0" Foreground="White" Background="White">
+                    </CheckBox>
+                    <CheckBox Content="Новинки" HorizontalAlignment="Left" Margin="10,2,0,0" Foreground="White" Background="White">
+                    </CheckBox>
+                    <CheckBox Content="Партнеры FURSKETCH" HorizontalAlignment="Left" Margin="10,2,0,0" Foreground="White" Background="White">
+                    </CheckBox>
+                    <TextBlock x:Name="ErrorTextBox" TextWrapping="Wrap" Foreground="Red" HorizontalAlignment="Center"></TextBlock>
+                    <Button x:Name = "SaveRegButton" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="2" Width="260" Height="30" Style="{StaticResource MaterialDesignRaisedButton}"
+                                     BorderThickness="2" BorderBrush="AliceBlue" Foreground="White" Content="Зарегистрироваться" Click="SaveRegButton_Click"></Button>
+                </StackPanel>
+            </StackPanel>
+        </Border>
+    </Grid>
+</Window>
